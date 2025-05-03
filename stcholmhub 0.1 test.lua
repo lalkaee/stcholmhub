@@ -7,102 +7,52 @@ local Window = Library:Window({
 })
 
 local Tab = Window:Tab({
-   Text = "Teleport"
-})
+    Text = "Teleports"
+ })
 
-local Tab2 = Window:Tab({
-   Text = "Visual"
-})
+ local Tab2 = Window:Tab({
+    Text = "Autofarm"
+ })
 
-local Tab3 = Window:Tab({
-   Text = "Visual2"
-})
+ local Section = Tab:Section({
+    Text = "Buttons"
+ })
 
-local Tab4 = Window:Tab({
-   Text = "Visua3"
-})
+ local Section2 = Tab2:Section({
+    Text = "Farms"
+ })
 
-local Section = Tab:Section({
-   Text = "Teleports location"
-})
+ Section:Button({
+    Text = "Teleport Brazil",
+    Callback = function()
+        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = workspace.Lobby.brazil.portal.CFrame
+        warn("Killed All")
+    end
+ })
 
-local Section2 = Tab2:Section({
-   Text = "Buttons2"
-})
+ Section:Button({
+    Text = "Teleport to cannon island",
+    Callback = function()
+        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(265.664215, 33.6846275, 197.380371, 0.637434483, -2.39488092e-08, 0.770504534, -3.25740004e-08, 1, 5.80302881e-08, -0.770504534, -6.20889224e-08, 0.637434483)
+        warn("Killed All")
+    end
+ })
 
-local Section3 = Tab3:Section({
-   Text = "Buttons2"
-})
-local Section4 = Tab4:Section({
-   Text = "Buttons2"
-})
-
-Section:Button({
-   Text = "Teleport to brazil",
-   Callback = function()
-    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = workspace.Lobby.brazil.portal.CFrame
-       warn("Killed All")
-   end
-})
-
-Section2:Button({
-   Text = "Kick",
-   Callback = function()
-       warn("Kick.")
-   end
-})
-
-Section2:Keybind({
-   Text = "Press",
-   Default = Enum.KeyCode.Z,
-   Callback = function()
-       warn("Pressed.")
-   end
-})
-
-Section2:Input({
-   Text = "Lil Input",
-   Callback = function(txt)
-       warn(txt)
-   end
-})
-
-Section:Button({
-   Text = "null",
-   Callback = function()
-       warn("Teleported")
-   end
-})
-
-local drop = Section:Dropdown({
-   Text = "null",
-   List = {"Idk", "Test"},
-   Callback = function(v)
-       warn(v)
-   end
-})
-
-Section:Slider({
-   Text = "nullS",
-   Default = 25,
-   Minimum = 0,
-   Maximum = 200
-})
-
-Section:Toggle({
-   Text = "nullF",
-   Callback = function(bool)
-       warn(bool)
-   end
-})
-
-Section:Button({
-   Text = "Refresh Dropdown",
-   Callback = function()
-       drop:Remove("Test")
-       wait(2)
-       drop:Add("123")
-   end
-})
-
-Tab:Select()
+ Section2:Button({
+    Text = "Slapple farm (GO AREA)",
+    Callback = function()
+        workspace.Arena.island5.Slapples:GetChildren()[7].Glove.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame
+        wait(0.1)
+        workspace.Arena.island5.Slapples:GetChildren()[3].Glove.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame
+        wait(0.1)
+        workspace.Arena.island5.Slapples:GetChildren()[4].Glove.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame
+        wait(0.1)
+        workspace.Arena.island5.Slapples:GetChildren()[9].Glove.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame
+        wait(0.1)
+        workspace.Arena.island5.Slapples:GetChildren()[8].Glove.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame
+        wait(0.1)
+        workspace.Arena.island5.Slapples:GetChildren()[5].Glove.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame
+        wait(0.1)
+        workspace.Arena.island5.Slapples:GetChildren()[2].Glove.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame
+    end
+ })
