@@ -349,10 +349,57 @@ Options.MyToggle:SetValue(false) -- Устанавливаем начально�
         
 
 
+    Tabs.AGB:AddButton({ 
+        Title = "Bob Fast Farm",
+        Description = "Go in lobby and press this button to activate fast bob farm (activate each time you join)",
+        Callback = function()
+    
+            local Workspace = game:GetService("Workspace")
+            local Players = game:GetService("Players")
+            local ReplicatedStorage = game:GetService("ReplicatedStorage")
+    
+            local replica = Workspace:WaitForChild("Lobby"):WaitForChild("Replica")
+            local clickDetector = replica:WaitForChild("ClickDetector")
+    
+            fireclickdetector(clickDetector)
+            wait(0.1)
+    
+            -- Телепорт игрока к нужной позиции
+            local player = Players.LocalPlayer
+            if player and player.Character and player.Character:FindFirstChild("HumanoidRootPart") then
+                player.Character.HumanoidRootPart.CFrame = Workspace.Lobby.Teleport1.CFrame
+            end
+            wait(0.1)
+    
+            -- Запускаем цикл фарма в отдельной задаче
+            task.spawn(function()
+                local Duplicate = ReplicatedStorage:WaitForChild("Duplicate") -- RemoteEvent
+    
+                while wait() do
+                    Duplicate:FireServer(true)
+                end
+            end)
+    
+        end
+    })
+    
+    
 
 
-
-
+    Tabs.AGB:AddButton({  
+        Title = "Get IceSkate Glove (INSTA!)",
+        Description = "(Make you ice)",
+        Callback = function()
+    
+            local ReplicatedStorage = game:GetService("ReplicatedStorage")
+            local IceSkate = ReplicatedStorage:WaitForChild("IceSkate")
+    
+            -- Отправляем событие на сервер
+            IceSkate:FireServer("Freeze")
+    
+        end
+    })
+    
 
 
 
