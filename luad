@@ -17,7 +17,7 @@ local Tabs = {
     Main = Window:AddTab({ Title = "Main", Icon = "rbxassetid://10723405649" }),
     Antis = Window:AddTab({ Title = "Anti Void", Icon = "rbxassetid://10734951684" }),
     Settings = Window:AddTab({ Title = "Settings", Icon = "settings" }),
-    AGB = Window:AddTab({ Title = "Auto Gloves + Badges", icon = "rbxassetid://10709818996" })
+    AGB = Window:AddTab({ Title = "Auto Gloves + Badges", Icon = "rbxassetid://10709818996" })
 }
 
 local Options = Fluent.Options
