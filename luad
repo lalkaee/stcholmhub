@@ -287,6 +287,53 @@ Options.MyToggle:SetValue(false) -- Устанавливаем начально�
     })
     
 
+-- Предполагается, что у тебя уже подключена Fluent UI Library
+-- Пример для Fluent Tabs и раздела Antis
+
+Tabs.Antis:AddToggle("AntiRagdollToggle", {
+    Title = "Anti-Ragdoll",
+    Description = "Prevents ragdoll effects on your character.",
+    Default = false,
+    Callback = function(state)
+        if not state then return end
+
+        local Players = game:GetService("Players")
+        local player = Players.LocalPlayer
+
+        local function disableRagdoll(char)
+            if not char then return end
+
+            -- Включаем все Motor6D (если они были отключены для ragdoll)
+            for _, joint in ipairs(char:GetDescendants()) do
+                if joint:IsA("Motor6D") and not joint.Enabled then
+                    joint.Enabled = true
+                end
+            end
+
+            -- Удаляем все физические соединения ragdoll
+            for _, constraint in ipairs(char:GetDescendants()) do
+                if constraint:IsA("BallSocketConstraint") or constraint:IsA("HingeConstraint") or constraint:IsA("RodConstraint") then
+                    constraint:Destroy()
+                end
+            end
+        end
+
+        local function onCharacterAdded(char)
+            disableRagdoll(char)
+
+            -- Удаляем ragdoll объекты при появлении
+            char.DescendantAdded:Connect(function(desc)
+                if desc:IsA("BallSocketConstraint") or desc:IsA("HingeConstraint") or desc:IsA("RodConstraint") then
+                    task.wait()
+                    desc:Destroy()
+                elseif desc:IsA("Motor6D") and not desc.Enabled then
+                    desc.Enabled = true
+                end
+            )})
+
+
+
+
     Tabs.AGB:AddButton({ 
         Title = "Get Hybrid Glove (INSTA)",
         Description = "When you click the button you automatically getting Hybrid Glove",
