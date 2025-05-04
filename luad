@@ -16,8 +16,8 @@ local Window = Fluent:CreateWindow({
 local Tabs = {
     Main = Window:AddTab({ Title = "Main", Icon = "rbxassetid://10723405649" }),
     Antis = Window:AddTab({ Title = "Anti Void", Icon = "rbxassetid://10734951684" }),
-    Settings = Window:AddTab({ Title = "Settings", Icon = "settings" }),
     AGB = Window:AddTab({ Title = "Auto Gloves + Badges", Icon = "rbxassetid://10709818996" })
+    Settings = Window:AddTab({ Title = "Settings", Icon = "settings" }),
 }
 
 local Options = Fluent.Options
