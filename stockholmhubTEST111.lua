@@ -3,8 +3,8 @@ local SaveManager = loadstring(game:HttpGet("https://raw.githubusercontent.com/d
 local InterfaceManager = loadstring(game:HttpGet("https://raw.githubusercontent.com/dawid-scripts/Fluent/master/Addons/InterfaceManager.lua"))()
 
 local Window = Fluent:CreateWindow({
-    Title = "Fluent " .. Fluent.Version,
-    SubTitle = "by dawid",
+    Title = "Stckhlm Hub " .. Fluent.Version,
+    SubTitle = "by admin",
     TabWidth = 160,
     Size = UDim2.fromOffset(580, 460),
     Acrylic = true, -- The blur may be detectable, setting this to false disables blur entirely
@@ -16,7 +16,8 @@ local Window = Fluent:CreateWindow({
 local Tabs = {
     Main = Window:AddTab({ Title = "Main", Icon = "rbxassetid://10723405649" }),
     Antis = Window:AddTab({ Title = "Anti Void", Icon = "rbxassetid://10734951684" }),
-    Settings = Window:AddTab({ Title = "Settings", Icon = "settings" })
+    Settings = Window:AddTab({ Title = "Settings", Icon = "settings" }),
+    AGB = Window:AddTab({ Title = "Auto Gloves + Badges", icon = "rbxassetid://10709818996" })
 }
 
 local Options = Fluent.Options
@@ -285,7 +286,35 @@ Options.MyToggle:SetValue(false) -- Устанавливаем начально�
         end
     })
     
+
+    Tabs.AGB:AddButton({ 
+        Title = "Get Hybrid Glove (INSTA)",
+        Description = "When you click the button you automatically getting Hybrid Glove",
+        Callback = function()
     
+            local ReplicatedStorage = game:GetService("ReplicatedStorage")
+            local GRRRRR = ReplicatedStorage:WaitForChild("GRRRRR")
+    
+            GRRRRR:FireServer("EnterRage")  
+    
+            local duration = 60
+            local interval = 1
+    
+            for i = 1, duration, interval do
+                GRRRRR:FireServer("StillInRage") 
+                wait(interval)
+            end
+    
+            GRRRRR:FireServer("ExitRage")  
+    
+        end
+    })
+    
+
+
+
+
+
 
 
     -- OnClick is only fired when you press the keybind and the mode is Toggle
